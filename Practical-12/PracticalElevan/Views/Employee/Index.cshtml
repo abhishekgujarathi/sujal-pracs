@@ -1,0 +1,49 @@
+﻿@model List<PracticalTwelve.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table border="1" class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>DOB</th>
+            <th>Mobile</th>
+            <th>Address</th>
+        </tr></thead>
+        @if (Model == null || !Model.Any())
+        {
+            <tr>
+                <td colspan="7" class="text-center text-danger">No data found</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.MiddleName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.DOB.ToShortDateString()</td>
+                    <td>@employee.MobileNumber</td>
+                    <td>@employee.Address</td>
+
+                </tr>
+            }
+        }
+</table>
+
+@Html.ActionLink("Insert", "Insert", "Employee", null,  new { @class = "btn btn-primary" })
+@Html.ActionLink("UpdateFirstName", "UpdateFirstName", "Employee", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("UpdateMiddleName", "UpdateMiddleName", "Employee", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("DeleteLessThanTwo", "DeleteLessThanTwo", "Employee", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("DeleteAll", "DeleteAll", "Employee", null, new { @class = "btn btn-primary" })
+
+
+

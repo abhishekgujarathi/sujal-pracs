@@ -1,0 +1,33 @@
+@model Practical_13_2.Models.Designation
+
+@{
+    ViewBag.Title = "Update Designation";
+}
+
+<h2>Update Designation</h2>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">
+        @ViewBag.Message
+    </div>
+}
+@using (Html.BeginForm("Update", "Designation"))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.DesignationName, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.DesignationName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DesignationName, "", new { @class = "text-danger" })
+    </div>
+
+    <input type="submit" value="Update" class="btn btn-warning" />
+}
+
+<hr />
+
+<h3>Designation DashBoard</h3>
+<br>
+@Html.ActionLink("DashBoard", "Index", "Designation", null, new { @class = "btn btn-primary" })

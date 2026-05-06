@@ -1,0 +1,31 @@
+@model PracticalTwelve.Models.Designation
+@{
+    ViewBag.Title = "Insert Designation";
+}
+
+<h2>Insert Designation</h2>
+
+@using (Html.BeginForm("InsertDesignation", "EmployeeThree"))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.DesignationName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.DesignationName, new { @class = "form-control", placeholder = "Enter Designation" })
+                @Html.ValidationMessageFor(m => m.DesignationName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input type="submit" value="Save" class="form-control btn btn-primary" />
+        </div>
+    </div>
+}
+<hr>
+<h3>Back To DashBoard</h3>
+<br>
+@Html.ActionLink("DashBoard", "Index", null, new { @class = "btn btn-primary" })
+
+

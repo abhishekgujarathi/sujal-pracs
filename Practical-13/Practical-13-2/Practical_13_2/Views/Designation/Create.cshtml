@@ -1,0 +1,32 @@
+﻿@model Practical_13_2.Models.Designation
+
+@{
+    ViewBag.Title = "Create Designation";
+}
+
+<h2>Create Designation</h2>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+@using (Html.BeginForm("Create", "Designation"))
+{
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.DesignationName, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.DesignationName, new { @class = "form-control", placeholder = "Enter Designation" })
+        @Html.ValidationMessageFor(m => m.DesignationName, "", new { @class = "text-danger" })
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+
+<hr />
+
+<h3>Designation DashBoard</h3>
+<br>
+@Html.ActionLink("DashBoard", "Index", "Designation", null, new { @class = "btn btn-primary" })

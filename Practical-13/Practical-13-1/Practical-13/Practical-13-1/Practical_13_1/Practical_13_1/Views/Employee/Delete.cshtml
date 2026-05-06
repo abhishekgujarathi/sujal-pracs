@@ -1,0 +1,17 @@
+﻿@model Practical_13_1.Models.Employee
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="row">
+    <h2>Delete</h2>
+    <h4 class="text-danger">Are you Sure To Remove :: @Model.Name</h4>
+    
+    <hr>
+    <div class="col-2">
+        @using (Html.BeginForm("DeleteConfirmed", "Employee", new { id = Model.Id }, FormMethod.Post, new {@class="form-group"}))
+        {
+            <input type="submit" class="btn btn-danger" value="Delete" />
+            @Html.ActionLink("Cancel", "Index", "Employee",null, new { @class = "btn btn-secondary" })
+        }
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model Practical_14.Models.Employee
+
+@{
+    ViewBag.Title = "Update Employee";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0 p-1">Update Employee</h4>
+                </div>
+
+                <div class="card-body">
+
+                    @using (Html.BeginForm("Update", "Employee", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(m => m.Id)
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.Name, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.DOB, "Date of Birth", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.DOB, "{0:yyyy-MM-dd}",
+                                new { @class = "form-control", type = "date" })
+                            @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.Age, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Update</button>
+
+                            @Html.ActionLink("Cancel", "Index", "Employee",
+                                null, new { @class = "btn btn-secondary" })
+                        </div>
+                    }
+
+                </div>
+
+        </div>
+    </div>
+
+</div>

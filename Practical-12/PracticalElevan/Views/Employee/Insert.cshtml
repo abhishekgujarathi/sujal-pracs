@@ -1,0 +1,55 @@
+﻿@model PracticalTwelve.Models.Employee
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>Insert</h2>
+
+@using (Html.BeginForm("Insert", "Employee"))
+{
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.FirstName, new {@class= "form-label" })
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                @Html.ValidationMessageFor(m => m.FirstName,"",new {@class="text-danger"})
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.MiddleName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control", placeholder = "MiddleName" })
+                @Html.ValidationMessageFor(m=>m.MiddleName, "", new {@class="text-danger"})
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "LastName" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.MobileNumber, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control", placeholder = "MobileNumber" })
+                @Html.ValidationMessageFor(m => m.MobileNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.DOB, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", placeholder = "DOB", type = "date" })
+                @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Address, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
+                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input type="submit" value="Save" class="form-control btn btn-primary" />
+        </div>
+    </div>
+}
+
+

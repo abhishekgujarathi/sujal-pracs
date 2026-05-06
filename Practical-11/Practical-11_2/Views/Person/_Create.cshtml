@@ -1,0 +1,24 @@
+﻿@model Practical_11_2.Models.Person
+
+@using (Ajax.BeginForm("Create", "Person",
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "partialContainer",
+        InsertionMode = InsertionMode.Replace
+    }))
+{
+    <h3>Create</h3>
+
+    @Html.TextBoxFor(m => m.Name, new { placeholder = "Name", @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(m => m.DOB, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(m => m.Address, new { placeholder = "Address", @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+
+    <br />
+    <input type="submit" value="Save" class="btn btn-success" />
+}

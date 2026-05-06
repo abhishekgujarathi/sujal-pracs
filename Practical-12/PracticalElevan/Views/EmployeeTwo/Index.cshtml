@@ -1,0 +1,52 @@
+﻿@model List<PracticalTwelve.Models.EmployeeTwo>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table border="1" class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>DOB</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Salary</th>
+        </tr></thead>
+        @if (Model == null || !Model.Any())
+        {
+            <tr>
+                <td colspan="7" class="text-center text-danger">No data found</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.MiddleName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.DOB.ToShortDateString()</td>
+                    <td>@employee.MobileNumber</td>
+                    <td>@employee.Address</td>
+                    <td>@employee.Salary</td>
+                </tr>
+            }
+        }
+</table>
+<hr>
+<br>
+@if(ViewBag.Key != null) { 
+<h4>@ViewBag.Key :: @ViewBag.Value</h4>}
+@Html.ActionLink("Insert Data", "Insert", "EmployeeTwo", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Count Null MiddleName", "CountNullMiddleName", "EmployeeTwo", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Get Employee Total Salary", "GetTotalSalary", "EmployeeTwo", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Get Employee Before 2000", "GetBefore2000", "EmployeeTwo", null, new { @class = "btn btn-primary" })
+
+
+

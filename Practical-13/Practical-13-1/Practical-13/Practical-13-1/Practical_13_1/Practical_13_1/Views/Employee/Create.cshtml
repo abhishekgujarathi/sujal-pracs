@@ -1,0 +1,34 @@
+﻿@model Practical_13_1.Models.Employee
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create","Employee",FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DOB, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.DOB, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Age, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Create</button>
+}
+

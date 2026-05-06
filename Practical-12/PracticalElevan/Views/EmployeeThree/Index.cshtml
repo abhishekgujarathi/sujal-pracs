@@ -1,0 +1,56 @@
+@model PracticalTwelve.Models.DashboardViewModel
+@{
+    ViewBag.Title = "DashBoard";
+}
+<h3>Insert Employee</h3>
+@Html.ActionLink("Insert", "InsertEmployee", null, new { @class = "btn btn-primary" })
+<hr>
+
+<h3>Insert Designation</h3>
+@Html.ActionLink("Insert", "InsertDesignation", null, new { @class = "btn btn-primary" })
+<hr>
+
+<h3>Get Employees Per Designation</h3>
+
+<select id="designationDropdown" class="form-control">
+    <option value="">-- Select Designation --</option>
+    @foreach (var item in (SelectList)ViewBag.DesignationList)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+</select>
+
+<br />
+
+<button class="btn btn-primary" onclick="loadEmployees()">Get Employees</button>
+
+<div id="resultArea"></div>
+
+<hr>
+
+@Html.Partial("_CountByDesignation", Model.CountByDesignation)
+@Html.Partial("_DisplayByDesignation", Model.DisplayByDesignation)
+@Html.Partial("_DisplayByView", Model.DisplayByView)
+@Html.Partial("_DisplayByStoredProcedure", Model.DisplayByStoredProcedure)
+@Html.Partial("_MoreThanOneDesignation", Model.MoreThanOne)
+@Html.Partial("_MaxSalaryEmployee", Model.MaxSalaryEmployee)
+
+<script>
+    function loadEmployees() {
+    var id = $("#designationDropdown").val();
+
+    if (id === "") {
+    alert("Please select designation");
+    return;
+        }
+
+    $.ajax({
+        url: '@Url.Action("DisplayEmployeesByDesignationStoredProcedure", "EmployeeThree")',
+        type: 'GET',
+        data: {id: id },
+        success: function (result) {
+        $("#resultArea").html(result);
+            }
+        });
+     }
+</script>

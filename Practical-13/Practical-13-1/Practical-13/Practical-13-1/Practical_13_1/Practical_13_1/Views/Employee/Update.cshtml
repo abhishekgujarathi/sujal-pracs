@@ -1,0 +1,35 @@
+﻿@model Practical_13_1.Models.Employee
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update","Employee",FormMethod.Post))
+{
+
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name,"Name", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DOB,"Date Of Birth", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.DOB, "{0:yyyy-MM-dd}",
+            new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Age,"Age", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <button type="submit" class="btn btn-info">Update</button>
+}
+

@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    
+    <h2>Welcome, @User.Identity.Name </h2>
+    @Html.ActionLink("Logout", "Login", "Account",null, new { @class = "btn btn-danger" });
+</div>
+

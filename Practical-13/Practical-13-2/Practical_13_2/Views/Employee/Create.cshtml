@@ -1,0 +1,76 @@
+﻿@model Practical_13_2.Models.Employee
+@{
+    ViewBag.Title = "Insert Employee";
+}
+
+<h2>Insert Employee</h2>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+@using (Html.BeginForm("Create", "Employee"))
+{
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.MiddleName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control", placeholder = "MiddleName" })
+                @Html.ValidationMessageFor(m => m.MiddleName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "LastName" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.MobileNumber, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control", placeholder = "MobileNumber" })
+                @Html.ValidationMessageFor(m => m.MobileNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.DOB, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", placeholder = "DOB", type = "date" })
+                @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Address, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
+                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Salary, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Salary, new { @class = "form-control", placeholder = "Salary" })
+                @Html.ValidationMessageFor(m => m.Salary, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.DesignationId, "Designation", new { @class = "form-label" })
+                @Html.DropDownListFor(m => m.DesignationId, (SelectList)ViewBag.DesignationList, "--Select Designation--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.DesignationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input type="submit" value="Save" class="form-control btn btn-primary" />
+        </div>
+    </div>
+}
+<hr>
+<h3>Employee DashBoard</h3>
+<br>
+@Html.ActionLink("DashBoard", "Index", "Employee", null, new { @class = "btn btn-primary" })
+
+

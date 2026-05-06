@@ -1,0 +1,55 @@
+﻿@model List<Practical_13_1.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="row">
+        <div class="col-3">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-9">
+            <br /><br>
+                  <table class="table table-bordered table-striped">
+                      <thead class="table-dark">
+
+                          <tr>
+                              <th>Id</th>
+                              <th>Name</th>
+                              <th>DOB</th>
+                              <th>Age</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                          @if (Model == null || !Model.Any())
+                          {
+                              <tr>
+                                  <td colspan="4" class="text-danger">
+                                      Not Found
+                                  </td>
+                              </tr>
+                          }
+                          else
+                          {
+                              foreach (var item in Model)
+                              {
+                                  <tr>
+                                      <td>@item.Id</td>
+                                      <td>@item.Name</td>
+                                      <td>@item.DOB.ToShortDateString()</td>
+                                      <td>@item.Age</td>
+                                      <td>
+                                          @Html.ActionLink("Update", "Update", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                          @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                      </td>
+                                  </tr>
+                              }
+                          }
+                  </table>
+        </div>
+    </div>
+</div>
+
+

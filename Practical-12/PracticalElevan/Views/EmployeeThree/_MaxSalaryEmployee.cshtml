@@ -1,0 +1,32 @@
+@model PracticalTwelve.Models.EmployeeDetailsViewModel
+
+<h3>Max Salary Employee</h3>
+
+<table border="1" class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>MiddleName</th>
+            <th>LastName</th>
+            <th>Designation</th>
+            <th>DOB</th>
+            <th>MobileNumber</th>
+            <th>Address</th>
+            <th>Salary</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.FirstName</td>
+            <td>@Model.MiddleName</td>
+            <td>@Model.LastName</td>
+            <td>@Model.DesignationName</td>
+            <td>@Model.DOB</td>
+            <td>@Model.MobileNumber</td>
+            <td>@Model.Address</td>
+            <td>@Model.Salary</td>
+        </tr>
+
+</table>
+<hr>

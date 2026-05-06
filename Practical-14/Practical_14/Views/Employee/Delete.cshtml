@@ -1,0 +1,59 @@
+﻿@model Practical_14.Models.Employee
+
+@{
+    ViewBag.Title = "Delete Employee";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0 p-1">Delete Employee</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="text-danger">
+                        Are you sure you want to remove this employee?
+                    </p>
+
+                    <hr />
+
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item">
+                            <strong>ID:</strong> @Model.Id
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Name:</strong> @Model.Name
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Age:</strong> @Model.Age
+                        </li>
+                        <li class="list-group-item">
+                            <strong>DOB:</strong> @Model.DOB.ToString("yyyy-MM-dd")
+                        </li>
+                    </ul>
+
+                    @using (Html.BeginForm("DeleteConfirmed", "Employee", new { id = Model.Id }, FormMethod.Post))
+                    {
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <input type="submit"
+                                   value="Yes, Delete"
+                                   class="btn btn-danger" />
+
+                            @Html.ActionLink("No, Cancel", "Index", "Employee", null,
+                                new { @class = "btn btn-secondary" })
+
+                        </div>
+                    }
+
+                </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,36 @@
+@model List<PracticalTwelve.Models.EmployeeWithDesignationViewModel>
+
+<h3>Display By Designation</h3>
+<div class="row">
+    <div class="col-6">
+        <table border="1" class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>FirstName</th>
+                    <th>MiddleName</th>
+                    <th>LastName</th>
+                    <th>Designation</th>
+                </tr>
+                </thead>
+                @if (Model == null || !Model.Any())
+                {
+                    <tr>
+                        <td colspan="7" class="text-center text-danger">No data found</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.MiddleName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.DesignationName</td>
+                        </tr>
+                    }
+                }
+        </table>
+    </div>
+</div>
+<hr>
