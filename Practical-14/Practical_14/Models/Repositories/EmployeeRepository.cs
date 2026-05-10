@@ -41,7 +41,7 @@ namespace Practical_14.Models
         public void Delete(int id)
         {
             var emp = _context.Employees.Find(id);
-            if(emp != null)
+            if (emp != null)
             {
                 _context.Employees.Remove(emp);
             }
