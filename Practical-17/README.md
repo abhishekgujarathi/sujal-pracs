@@ -3,6 +3,7 @@
 Controllers:
 - StudentsController
 - UsersController
+- AuthController
 
 Action Methods:
 StudentsController:
@@ -14,6 +15,9 @@ StudentsController:
 
 UsersController:
 - GetUsers
+
+AuthController
+- Login
 
 Models:
 - Entity:

@@ -35,3 +35,5 @@ Models:
     - MappingProfile.cs
 - EF Core DbContext:
     - ApplicationDbContext.cs
+- Validation:
+    - Validators/StudentValidator.cs
